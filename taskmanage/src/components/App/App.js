@@ -11,13 +11,21 @@ const App = () => {
   });
 
   const handleTaskAdd = (task, category) => {
-    setTasks((prevTasks) => ({
+      console.log("task1",task);
+      console.log("task2",category);
+  setTasks((prevTasks) => {
+    console.log("task3",prevTasks);
+    const updatedTasks = {
       ...prevTasks,
       [category]: [...prevTasks[category], task],
-    }));
-  };
+    };
+    return updatedTasks;
+  });
+};
 
   const handleTaskDelete = (taskId, category) => {
+    console.log("Task1",taskId);
+    console.log("Task2",category);
     setTasks((prevTasks) => ({
       ...prevTasks,
       [category]: prevTasks[category].filter((task) => task.id !== taskId),
@@ -34,19 +42,19 @@ const App = () => {
     <div className="app">
       <TaskForm onTaskAdd={handleTaskAdd} />
       <TaskList
-        category="Added"
+        category="added"
         tasks={tasks.added}
         onTaskDelete={handleTaskDelete}
         onTaskMove={handleTaskMove}
       />
       <TaskList
-        category="Started"
+        category="started"
         tasks={tasks.started}
         onTaskDelete={handleTaskDelete}
         onTaskMove={handleTaskMove}
       />
       <TaskList
-        category="Completed"
+        category="completed"
         tasks={tasks.completed}
         onTaskDelete={handleTaskDelete}
         onTaskMove={handleTaskMove}

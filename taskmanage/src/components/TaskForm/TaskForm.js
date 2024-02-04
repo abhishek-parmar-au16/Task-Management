@@ -16,7 +16,7 @@ const TaskForm = ({ onTaskAdd }) => {
         id: uuidv4(),
         title: taskTitle,
       };
-      onTaskAdd(newTask, 'Added');
+      onTaskAdd(newTask, 'added');
       setTaskTitle('');
     }
   };
