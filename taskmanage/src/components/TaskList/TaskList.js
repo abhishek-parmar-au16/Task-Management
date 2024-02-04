@@ -1,5 +1,5 @@
 import React from 'react';
-import { Droppable } from 'react-beautiful-dnd';
+import { Droppable  ,DragDropContext} from 'react-beautiful-dnd';
 import TaskItem from '../TaskItem/TaskItem';
 // import './TaskList.css';
 
@@ -7,6 +7,7 @@ const TaskList = ({ category, tasks, onTaskDelete, onTaskMove }) => {
   return (
     <div className="task-list">
       <h2>{category}</h2>
+      <DragDropContext>
       <Droppable droppableId={category}>
         {(provided) => (
           <div ref={provided.innerRef} {...provided.droppableProps}>
@@ -24,6 +25,7 @@ const TaskList = ({ category, tasks, onTaskDelete, onTaskMove }) => {
           </div>
         )}
       </Droppable>
+      </DragDropContext>
     </div>
   );
 };
